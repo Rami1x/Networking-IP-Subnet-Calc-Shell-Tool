@@ -137,6 +137,38 @@ def getSummarized(One, Two):
 
     return sum_append
 
+def ipv4_output(beginning, ending):
+    num_list = [128, 64, 32, 16, 8, 4, 2, 1]
+    ipv4_1 = 0
+    ipv4_2 = 0
+    i = 0
+    final_value = ""
+
+    for num in ending[0]:
+        if num == "1":
+            ipv4_1 += num_list[i]
+            i += 1
+        else:
+            i += 1
+
+    i = 0
+
+    for num in ending[1]:
+        if num == "1":
+            ipv4_2 += num_list[i]
+            i += 1
+        else:
+            i += 1
+    
+    for value in beginning:
+        final_value +=  (value + ".")
+    
+    final_value += (str(ipv4_1) + "." + str(ipv4_2))
+
+
+
+    return print(final_value)
+
 checker = check(x, y) 
 
 if checker == True:
@@ -144,7 +176,8 @@ if checker == True:
     binary_convert_one, binary_convert_two = binary(diff_addr1, diff_addr2)
     summarized = getSummarized(binary_convert_one, binary_convert_two)
 
+
     print(f"Identical segments of first and second IP: {same_addr}\nDifferent segments for first IP: {diff_addr1}\nDifferent segments for second IP: {diff_addr2}\n")
-    
-    
+
+    ipv4_output(same_addr, summarized)
     
